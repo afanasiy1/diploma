@@ -174,6 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const bannerForm = () => {
         const checkbox = document.getElementById('check1');
         const input = document.getElementById('sendForm');
+
         const toogleInput = function(e) {
             input.disabled = !e.target.checked;
         };
@@ -251,7 +252,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (target.classList.contains('close-burger')) {
                 popUp.style.display = 'none';
             } else {
-                target = !target.closest('.scroll');
+                target = !target.matches('a');
 
                 if (!target) {
                     popUp.style.display = 'none';
@@ -331,9 +332,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
     thanksPopup();
-
-
-
 
 
 

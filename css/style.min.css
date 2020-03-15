@@ -1110,6 +1110,7 @@ header .head .call .btn {
 }
 
 header nav.top-menu {
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
