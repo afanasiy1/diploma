@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afanasiy1/study_JS.git"
+    "url": "git+https://github.com/afanasiy1/diploma.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/afanasiy1/study_JS/issues"
+    "url": "https://github.com/afanasiy1/diploma/issues"
   },
-  "homepage": "https://github.com/afanasiy1/study_JS#readme"
+  "homepage": "https://github.com/afanasiy1/diploma#readme"
 }

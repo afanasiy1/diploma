@@ -128,7 +128,7 @@ window.addEventListener('DOMContentLoaded', () => {
             giftImg = document.querySelector('.fixed-gift');
         popypBtn.forEach(elem => {
             elem.addEventListener('click', () => {
-                if (screen.width > 768) {
+                if (elem) {
                     event.preventDefault();
                     popUp.style.display = 'flex';
                     giftImg.style.display = 'none';
@@ -158,15 +158,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //slider
     const slider = () => {
-        let current = 0;
-        const slides = document.querySelectorAll('.slide-text');
-        setInterval(() => {
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-            current = (current !== slides.length - 1) ? current + 1 : 0;
-            slides[current].style.display = 'block';
-        }, 1000);
+        // let current = 0;
+        // const slider = document.querySelector('.head-slider');
+        // const slides = slider.querySelectorAll('.slide');
+        // setInterval(() => {
+        //     for (let i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = 'none';
+        //     }
+        //     current = (current !== slides.length - 1) ? current + 1 : 0;
+        //     slides[current].style.display = 'block';
+        // }, 1000);
     };
     slider();
     // banner
@@ -237,7 +238,7 @@ window.addEventListener('DOMContentLoaded', () => {
             popypBtn = document.querySelectorAll('.burger-menu');
         popypBtn.forEach(elem => {
             elem.addEventListener('click', () => {
-                if (screen.width < 768) {
+                if (elem) {
                     popUp.style.display = 'flex';
 
                 } else {
@@ -262,18 +263,28 @@ window.addEventListener('DOMContentLoaded', () => {
     //СТИКИ БУРГЕР
 
     const stickyBurger = () => {
-        const el = document.querySelector('.top-menu');
-        const elTop = el.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
+        const btnBurgerMenu = document.querySelector('.menu-button');
+        const topMenu = document.querySelector('.top-menu');
+        const head = document.querySelector('.head');
 
-        window.addEventListener('scroll', () => {
-            if (document.documentElement.scrollTop > elTop) {
-                el.style.position = 'fixed';
-                el.style.top = '0px';
+        const fixedMenu = () => {
+            if (document.documentElement.clientWidth < 768) {
+                btnBurgerMenu.style.display = `block`;
+                const top = Math.ceil(head.getBoundingClientRect().bottom);
+
+                if (top <= 0) {
+                    topMenu.style.position = `fixed`;
+                } else {
+                    topMenu.style.position = 'relative';
+                }
             } else {
-                el.style.position = 'static';
-                el.style.top = 'auto';
+                btnBurgerMenu.style.display = `none`;
+                topMenu.style.position = 'relative';
             }
-        });
+        };
+
+        window.addEventListener('scroll', fixedMenu);
+        window.addEventListener('resize', fixedMenu);
     };
     stickyBurger();
 
@@ -290,6 +301,44 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     };
     arrowUp();
+
+
+    const thanksPopup = () => {
+        const popUp = document.getElementById('thanks'),
+            popypBtn = document.getElementById('sendForm');
+
+        popypBtn.addEventListener('click', () => {
+            if (popypBtn) {
+                popUp.style.display = 'block';
+
+            } else {
+                popUp.style.display = 'block';
+            }
+        });
+
+        popUp.addEventListener('click', event => {
+            let target = event.target;
+            if (target.classList.contains('close-form') ||
+            target.classList.contains('close-btn')) {
+                popUp.style.display = 'none';
+            } else {
+                target = target.closest('.form-content');
+
+                if (!target) {
+                    popUp.style.display = 'none';
+                }
+            }
+        });
+    };
+    thanksPopup();
+
+
+
+
+
+
+
+
 
 
 

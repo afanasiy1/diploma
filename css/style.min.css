@@ -1022,7 +1022,8 @@ header .head .club-select .clubs-list ul {
     padding: 15px;
     border: 1px solid #ffd11a;
     border-radius: 10px;
-    text-align: center
+    text-align: center;
+    z-index: 9999;
 }
 
 header .head .club-select .clubs-list ul li a {
@@ -1109,7 +1110,6 @@ header .head .call .btn {
 }
 
 header nav.top-menu {
-    z-index: 4444;
     top: 0;
     left: 0;
     width: 100%;
@@ -2110,6 +2110,7 @@ footer .footer-bottom .right .socials .social-icon:hover a {
 }
 
 .popup .form-content {
+    
     position: relative;
     display: flex;
     flex-direction: column;
@@ -2249,6 +2250,7 @@ p.personal-data input[type=checkbox]:checked+label:before {
 }
 
 #gift .form-content p {
+
     font-size: 20px;
     width: 90%;
     color: #fff;
@@ -2400,12 +2402,6 @@ p.personal-data input[type=checkbox]:checked+label:before {
 
     .hidden-large {
         display: block;
-        /* position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 30px;
-        z-index: 1000; */
     }
 
 
