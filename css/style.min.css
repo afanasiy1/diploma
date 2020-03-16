@@ -2758,44 +2758,26 @@ p.personal-data input[type=checkbox]:checked+label:before {
 }
 .service-btns {
     display: flex;    
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
-.service-active {
-    opacity: 1;
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s
-}
-.service {
-    display: none;
- }
- .service-active {
-     display: block;
- }
- .service-dots {
-    bottom: 20px;
-    margin: 20px auto 0;
-   
-    z-index: 5
-}
 
-.service-dots .dot {
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
-    margin: 0 10px;
-    border-radius: 50%;
-    border: solid black;
-    display: inline-block;
-    -webkit-transition: background-color, -webkit-transform .4s;
-    transition: background-color, transform .4s, -webkit-transform .4s
-}
 
-.service-dots .dot-active {
-    background-color: yellow;
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2)
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .slide-text {
     opacity: 1;
     -webkit-transition: opacity .5s;

@@ -453,109 +453,118 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //средний слайдер средний слайдер средний слайдер средний слайдер
     const middleSlider = () => {
-        const slider = document.querySelector('.services-slider'),
-            slide = slider.querySelectorAll('.slide');
-
-        let currentSlide = 0,
-            interval;
-        const prevSlide = (elem, index, strClass) => {
-            elem[index].classList.remove(strClass);
-
-        };
-        const nextSlide = (elem, index, strClass) => {
-            elem[index].classList.add(strClass);
-        };
-        const portfolioDots = document.querySelector('.service-dots');
+        const partners = document.querySelector('#services'),
+            partnersSlider = partners.querySelector('.services-slider');
+        partners.querySelector('#arrow-left').style.display = 'none';
+        let current = 0;
+        const hideElemet = 3;
 
 
-        const slideDotAdd = () => {
-            for (let i = 0; i < slide.length; i++) {
-                const child = document.createElement('li');
-                if (i === 0) {
-                    child.classList.add('dot');
-                    child.classList.add('dot-active');
-                } else {
-                    child.classList.add('dot');
-                }
-                portfolioDots.appendChild(child);
+        partners.addEventListener('click', e => {
+            const target = e.target;
+
+            if (target.closest('#arrow-right')) {
+                current++;
+            } else if (target.closest('#arrow-left')) {
+                current--;
             }
 
-        };
-        slideDotAdd();
-
-        const dot = document.querySelectorAll('.dot');
-
-        const autoPlaySlide = () => {
-
-            prevSlide(slide, currentSlide, 'service-active');
-            prevSlide(dot, currentSlide, 'dot-active');
-            currentSlide++;
-            if (currentSlide >= slide.length) {
-                currentSlide = 0;
-            }
-            nextSlide(slide, currentSlide, 'service-active');
-            nextSlide(dot, currentSlide, 'dot-active');
-
-        };
-
-        const startSlide = (time = 3000) => {
-            interval = setInterval(autoPlaySlide, time);
-        };
-        const stopSlide = () => {
-            clearInterval(interval);
-        };
-
-        slider.addEventListener('click', event => {
-            event.preventDefault();
-
-            const target = event.target;
-            if (!target.matches('.service-btn, .dot')) {
-                return;
+            if (current === hideElemet) {
+                partners.querySelector('#arrow-right').style.display = 'none';
+            } else {
+                partners.querySelector('#arrow-right').style.display = 'flex';
             }
 
-            prevSlide(slide, currentSlide, 'service-active');
-            prevSlide(dot, currentSlide, 'dot-active');
-            if (target.matches('#arrow-right')) {
-                currentSlide++;
+            if (current === 0) {
+                partners.querySelector('#arrow-left').style.display = 'none';
+            } else {
+                partners.querySelector('#arrow-left').style.display = 'flex';
+            }
 
-            } else if (target.matches('#arrow-left')) {
-                currentSlide--;
-            } else if (target.matches('.dot')) {
-                dot.forEach((elem, index) => {
-                    if (elem === target) {
-                        currentSlide = index;
-                    }
-                });
-            }
-            if (currentSlide >= slide.length) {
-                currentSlide = 0;
-            }
-            if (currentSlide < 0) {
-                currentSlide = slide.length - 1;
-            }
-            nextSlide(slide, currentSlide, 'service-active');
-            nextSlide(dot, currentSlide, 'dot-active');
+            partnersSlider.style.transform = `translateX(-${current * 392}px)`;
         });
-        slider.addEventListener('mouseover', event => {
-            if (event.target.matches('.service-btn') ||
-            event.target.matches('.dot')) {
-                stopSlide();
-            }
-        });
-        slider.addEventListener('mouseout', event => {
-            if (event.target.matches('.service-btn') ||
-            event.target.matches('.dot')) {
-                startSlide();
-            }
-        });
-        startSlide(1500);
-        const sliderTransform = document.querySelector('.services-slider');
-        sliderTransform.style.transform = "translate3d3(500px, 0px, 0px)";
     };
     middleSlider();
 
+    ///калькулятор
+    const calc = () => {
+        const form = document.getElementById('card_order');
+        const months1 = document.querySelector('.months1');
+        const months6 = document.querySelector('.months6');
+        const months9 = document.querySelector('.months9');
+        const months12 = document.querySelector('.months12');
+        const total = document.getElementById('price-total');
+
+        const cardMozaika = document.querySelector('.card_leto_mozaika');
+        const cardShelkovo = document.querySelector('.card_leto_schelkovo');
+
+        const countSum = () => {
+            cardMozaika.onclick = () => {
+                console.log(1);
+                months1.addEventListener('click', () => {
+                    if (months1) {
+                        total.textContent = 2999;
+                    }
+
+                });
+                months6.addEventListener('click', () => {
+                    if (months6) {
+                        total.textContent = 14999;
+                    }
+
+                });
+                months9.addEventListener('click', () => {
+                    if (months9) {
+                        total.textContent = 21999;
+                    }
+
+                });
+                months12.addEventListener('click', () => {
+                    if (months12) {
+                        total.textContent = 24999;
+                    }
+
+                });
+            };
+            cardShelkovo.onclick = () => {
+                console.log(2);
+                months1.addEventListener('click', () => {
+                    if (months1) {
+                        total.textContent = 1999;
+                    }
+
+                });
+                months6.addEventListener('click', () => {
+                    if (months6) {
+                        total.textContent = 9999;
+                    }
+
+                });
+                months9.addEventListener('click', () => {
+                    if (months9) {
+                        total.textContent = 13999;
+                    }
+
+                });
+                months12.addEventListener('click', () => {
+                    if (months12) {
+                        total.textContent = 19999;
+                    }
+
+                });
+            };
+        };
+
+        form.addEventListener('click', event => {
+            const target = event.target;
+            if (target.matches('input')) {
+                countSum();
+            }
+        });
 
 
+    };
+    calc();
 
 
 
