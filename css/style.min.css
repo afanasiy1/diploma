@@ -2676,3 +2676,134 @@ p.personal-data input[type=checkbox]:checked+label:before {
 .totop {
     display: none;
 }
+.gallery-btn.prev {
+    z-index: 8888;
+    border-radius: 100px;
+    border: 5px solid black;
+    background-color: rgb(255, 255, 0);
+    background-image: url(../images/arrow-left.png);
+    width: 50px;
+    height: 50px;
+}
+
+.gallery-btn.next {
+    z-index: 8888;
+    border-radius: 100px;
+    border: 5px solid black;
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+
+    background-image: url(../images/arrow-right.png);
+}
+.gallery-btns {
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+}
+.gallery-dots {
+    bottom: 20px;
+    margin: 20px auto 0;
+   
+    z-index: 5
+}
+
+.gallery-dots .dot {
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: solid black;
+    display: inline-block;
+    -webkit-transition: background-color, -webkit-transform .4s;
+    transition: background-color, transform .4s, -webkit-transform .4s
+}
+
+.gallery-dots .dot-active {
+    background-color: yellow;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+.gallery-active {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
+}
+.gallery {
+   display: none;
+}
+.gallery-active {
+    display: block;
+}
+.service-btn.prev {
+    z-index: 8888;
+    border-radius: 100px;
+    border: 5px solid rgb(255, 255, 0);
+    background-color: black;
+    background-image: url(../images/arrow-left.png);
+    width: 50px;
+    height: 50px;
+}
+
+.service-btn.next {
+    z-index: 8888;
+    border-radius: 100px;
+    border: 5px solid rgb(255, 255, 0);
+    width: 50px;
+    height: 50px;
+    background-color: black;
+
+    background-image: url(../images/arrow-right.png);
+}
+.service-btns {
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+}
+.service-active {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
+}
+.service {
+    display: none;
+ }
+ .service-active {
+     display: block;
+ }
+ .service-dots {
+    bottom: 20px;
+    margin: 20px auto 0;
+   
+    z-index: 5
+}
+
+.service-dots .dot {
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    margin: 0 10px;
+    border-radius: 50%;
+    border: solid black;
+    display: inline-block;
+    -webkit-transition: background-color, -webkit-transform .4s;
+    transition: background-color, transform .4s, -webkit-transform .4s
+}
+
+.service-dots .dot-active {
+    background-color: yellow;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+.slide-text {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s
+}
+.slide-text {
+    display: none;
+ }
+ .textSlide-active {
+     display: block;
+ }
