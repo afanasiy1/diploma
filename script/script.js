@@ -158,16 +158,34 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //slider
     const slider = () => {
-        // let current = 0;
-        // const slider = document.querySelector('.head-slider');
-        // const slides = slider.querySelectorAll('.slide');
-        // setInterval(() => {
-        //     for (let i = 0; i < slides.length; i++) {
-        //         slides[i].style.display = 'none';
-        //     }
-        //     current = (current !== slides.length - 1) ? current + 1 : 0;
-        //     slides[current].style.display = 'block';
-        // }, 1000);
+        const slide = document.querySelectorAll('.slide-text');
+        let currentSlide = 0;
+        let interval;
+        const prevSlide = (elem, index, strClass) => {
+            elem[index].classList.remove(strClass);
+            interval;
+
+        };
+        const nextSlide = (elem, index, strClass) => {
+            elem[index].classList.add(strClass);
+        };
+
+        const autoPlaySlide = () => {
+
+            prevSlide(slide, currentSlide, 'textSlide-active');
+            currentSlide++;
+            if (currentSlide >= slide.length) {
+                currentSlide = 0;
+            }
+            nextSlide(slide, currentSlide, 'textSlide-active');
+
+        };
+
+        const startSlide = (time = 3000) => {
+            interval = setInterval(autoPlaySlide, time);
+        };
+        startSlide(1500);
+
     };
     slider();
     // banner
@@ -303,7 +321,7 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     arrowUp();
 
-
+    //СПАСИБО ПОПАП
     const thanksPopup = () => {
         const popUp = document.getElementById('thanks'),
             popypBtn = document.getElementById('sendForm');
@@ -332,9 +350,209 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     };
     thanksPopup();
+    //СЛАЙДЕР НИЖНИЙ
+    const lastslider = () => {
+        const slider = document.querySelector('.gallery-slider'),
+            slide = slider.querySelectorAll('.slide');
+
+        let currentSlide = 0,
+            interval;
+        const prevSlide = (elem, index, strClass) => {
+            elem[index].classList.remove(strClass);
+
+        };
+        const nextSlide = (elem, index, strClass) => {
+            elem[index].classList.add(strClass);
+        };
+        const portfolioDots = document.querySelector('.gallery-dots');
 
 
+        const slideDotAdd = () => {
+            for (let i = 0; i < slide.length; i++) {
+                const child = document.createElement('li');
+                if (i === 0) {
+                    child.classList.add('dot');
+                    child.classList.add('dot-active');
+                } else {
+                    child.classList.add('dot');
+                }
+                portfolioDots.appendChild(child);
+            }
 
+        };
+        slideDotAdd();
+
+        const dot = document.querySelectorAll('.dot');
+
+        const autoPlaySlide = () => {
+
+            prevSlide(slide, currentSlide, 'gallery-active');
+            prevSlide(dot, currentSlide, 'dot-active');
+            currentSlide++;
+            if (currentSlide >= slide.length) {
+                currentSlide = 0;
+            }
+            nextSlide(slide, currentSlide, 'gallery-active');
+            nextSlide(dot, currentSlide, 'dot-active');
+
+        };
+
+        const startSlide = (time = 3000) => {
+            interval = setInterval(autoPlaySlide, time);
+        };
+        const stopSlide = () => {
+            clearInterval(interval);
+        };
+
+        slider.addEventListener('click', event => {
+            event.preventDefault();
+
+            const target = event.target;
+            if (!target.matches('.gallery-btn, .dot')) {
+                return;
+            }
+
+            prevSlide(slide, currentSlide, 'gallery-active');
+            prevSlide(dot, currentSlide, 'dot-active');
+            if (target.matches('#arrow-right')) {
+                currentSlide++;
+
+            } else if (target.matches('#arrow-left')) {
+                currentSlide--;
+            } else if (target.matches('.dot')) {
+                dot.forEach((elem, index) => {
+                    if (elem === target) {
+                        currentSlide = index;
+                    }
+                });
+            }
+            if (currentSlide >= slide.length) {
+                currentSlide = 0;
+            }
+            if (currentSlide < 0) {
+                currentSlide = slide.length - 1;
+            }
+            nextSlide(slide, currentSlide, 'gallery-active');
+            nextSlide(dot, currentSlide, 'dot-active');
+        });
+        slider.addEventListener('mouseover', event => {
+            if (event.target.matches('.gallery-btn') ||
+            event.target.matches('.dot')) {
+                stopSlide();
+            }
+        });
+        slider.addEventListener('mouseout', event => {
+            if (event.target.matches('.gallery-btn') ||
+            event.target.matches('.dot')) {
+                startSlide();
+            }
+        });
+        startSlide(1500);
+    };
+    lastslider();
+
+    //средний слайдер средний слайдер средний слайдер средний слайдер
+    const middleSlider = () => {
+        const slider = document.querySelector('.services-slider'),
+            slide = slider.querySelectorAll('.slide');
+
+        let currentSlide = 0,
+            interval;
+        const prevSlide = (elem, index, strClass) => {
+            elem[index].classList.remove(strClass);
+
+        };
+        const nextSlide = (elem, index, strClass) => {
+            elem[index].classList.add(strClass);
+        };
+        const portfolioDots = document.querySelector('.service-dots');
+
+
+        const slideDotAdd = () => {
+            for (let i = 0; i < slide.length; i++) {
+                const child = document.createElement('li');
+                if (i === 0) {
+                    child.classList.add('dot');
+                    child.classList.add('dot-active');
+                } else {
+                    child.classList.add('dot');
+                }
+                portfolioDots.appendChild(child);
+            }
+
+        };
+        slideDotAdd();
+
+        const dot = document.querySelectorAll('.dot');
+
+        const autoPlaySlide = () => {
+
+            prevSlide(slide, currentSlide, 'service-active');
+            prevSlide(dot, currentSlide, 'dot-active');
+            currentSlide++;
+            if (currentSlide >= slide.length) {
+                currentSlide = 0;
+            }
+            nextSlide(slide, currentSlide, 'service-active');
+            nextSlide(dot, currentSlide, 'dot-active');
+
+        };
+
+        const startSlide = (time = 3000) => {
+            interval = setInterval(autoPlaySlide, time);
+        };
+        const stopSlide = () => {
+            clearInterval(interval);
+        };
+
+        slider.addEventListener('click', event => {
+            event.preventDefault();
+
+            const target = event.target;
+            if (!target.matches('.service-btn, .dot')) {
+                return;
+            }
+
+            prevSlide(slide, currentSlide, 'service-active');
+            prevSlide(dot, currentSlide, 'dot-active');
+            if (target.matches('#arrow-right')) {
+                currentSlide++;
+
+            } else if (target.matches('#arrow-left')) {
+                currentSlide--;
+            } else if (target.matches('.dot')) {
+                dot.forEach((elem, index) => {
+                    if (elem === target) {
+                        currentSlide = index;
+                    }
+                });
+            }
+            if (currentSlide >= slide.length) {
+                currentSlide = 0;
+            }
+            if (currentSlide < 0) {
+                currentSlide = slide.length - 1;
+            }
+            nextSlide(slide, currentSlide, 'service-active');
+            nextSlide(dot, currentSlide, 'dot-active');
+        });
+        slider.addEventListener('mouseover', event => {
+            if (event.target.matches('.service-btn') ||
+            event.target.matches('.dot')) {
+                stopSlide();
+            }
+        });
+        slider.addEventListener('mouseout', event => {
+            if (event.target.matches('.service-btn') ||
+            event.target.matches('.dot')) {
+                startSlide();
+            }
+        });
+        startSlide(1500);
+        const sliderTransform = document.querySelector('.services-slider');
+        sliderTransform.style.transform = "translate3d3(500px, 0px, 0px)";
+    };
+    middleSlider();
 
 
 
